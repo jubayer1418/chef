@@ -22,21 +22,34 @@ const Navbar = () => {
           </span>
         </Link>
         <nav className="md:mx-auto  md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-          <NavLink to={"/"} className="mr-5 hover:text-gray-900">
+          <NavLink
+            to={"/"}
+            className={({ isActive }) =>
+              isActive
+                ? "text-red-400 mr-5 font-bold"
+                : " hover:text-red-400 mr-5 font-bold"
+            }
+          >
             Home
           </NavLink>
-          <NavLink to={"blogs"} className="mr-5 hover:text-gray-900">
+          <NavLink
+            to={"blogs"}
+            className={({ isActive }) =>
+              isActive
+                ? "text-red-400 mr-5 font-bold"
+                : "mr-5 hover:text-red-400 font-bold"
+            }
+          >
             Blogs
           </NavLink>
         </nav>
-        <div className="flex items-center gap-10">
+        <span className="hover:text-red-400 pr-8">{user?.email}</span>
+        <div className="flex items-center gap-10 h-32">
           {user ? (
             <>
-              <span>{user.email}</span>
-
               <button
                 onClick={HandleLogOut}
-                className="inline-flex items-center bg-gray-100 border-0 py-1 px-5  focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+                className=" hover:bg-red-400 inline-flex items-center bg-gray-100 border-0  px-5  focus:outline-none hover:text-white hover:font-semibold rounded text-base  md:mt-0"
               >
                 Logout
               </button>
@@ -49,8 +62,8 @@ const Navbar = () => {
               Login
             </NavLink>
           )}
-          <div className="  w-10 rounded-full">
-            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          <div className="  w-10 rounded-full ">
+            <img src="https://i.pinimg.com/280x280_RS/e4/86/86/e4868681b6e2cc4ce83c3b9a5d010b6c.jpg" />
           </div>
         </div>
       </div>
