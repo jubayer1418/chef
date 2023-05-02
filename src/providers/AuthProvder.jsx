@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import {
@@ -20,6 +21,7 @@ const AuthProvder = ({ children }) => {
   const singIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
+
   const logOut = () => {
     return signOut(auth);
   };

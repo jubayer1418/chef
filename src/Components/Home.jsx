@@ -1,27 +1,28 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
+import Button from "./Button";
 
 const Home = () => {
   return (
-    <div>
-      <div
-        className="hero min-h-screen"
-        style={{
-          backgroundImage: `url("https://images.unsplash.com/photo-1457460866886-40ef8d4b42a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80")`,
-        }}
-      >
-        <div className="bg-opacity-30"></div>
-        <div className="hero-content  text-neutral-content">
-          <div className="max-w-md ">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-            <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
-            <button className="btn btn-primary">Get Started</button>
-          </div>
-        </div>
+    <div className="grid md:grid-cols-2 w-[80%] mx-auto my-9">
+      <div className="space-y-10">
+        <h1 className="text-8xl font-semibold">
+          Get Fresh <span className="text-yellow-400">Food </span>
+          in a Easy Way
+        </h1>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse
+          reiciendis quaerat nobis deleniti amet non inventore. Reprehenderit
+          recusandae voluptatibus minus tenetur itaque numquam cum quos dolorem
+          maxime. Quas, quaerat nisi. Lorem ipsum dolor sit, amet consectetur
+          adipisicing elit. Cumque facilis, quaerat cupiditate nulla quibusdam
+          quo sunt esse tempore inventore vel voluptate, amet laudantium
+          adipisci veniam nihil quam molestiae omnis mollitia.
+        </p>
+        <Button>Order Now</Button>
+      </div>
+      <div>
+        <img src="../../public/assets/main_img.png" alt="" />
       </div>
     </div>
   );

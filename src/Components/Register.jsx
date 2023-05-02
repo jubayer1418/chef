@@ -1,20 +1,31 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from "react";
+import { updateProfile } from "firebase/auth";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvder";
 
 const Register = () => {
-  const { user, createUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const { user, createUser, nameImg } = useContext(AuthContext);
   const handleRegister = (event) => {
     event.preventDefault();
+
     const form = event.target;
     const name = form.name.value;
+
+    const img = form.img.value;
+
     const email = form.email.value;
     const password = form.password.value;
+    if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
+      setError("password not valid need 8 char ");
+      return;
+    }
     console.log(name, email, password);
     createUser(email, password)
       .then((result) => {
         const logUser = result.user;
+        updateData(result.user);
         form.reset();
         console.log(logUser);
       })
@@ -22,10 +33,23 @@ const Register = () => {
         const errorMessage = error.message;
         console.log(errorMessage);
       });
+    const updateData = (user) => {
+      updateProfile(user, {
+        displayName: name,
+        photoURL: img,
+      })
+        .then(() => {
+          console.log("updatae");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
   };
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex">
+        {!user && error}
         <div className="text-center ">
           <h1 className="text-5xl font-bold">Please Register!</h1>
         </div>
@@ -89,7 +113,7 @@ const Register = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Register</button>
+              <button className="btn btn-warning">Register</button>
             </div>
           </form>
         </div>
