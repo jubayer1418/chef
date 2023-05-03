@@ -1,26 +1,28 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvder";
 import Gitgogle from "./gitgogle";
 
 const Login = () => {
+  const [error, setError] = useState("");
   const { singIn } = useContext(AuthContext);
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+
     singIn(email, password)
       .then((result) => {
         const loguser = result.user;
-        console.log(loguser);
+        setError("");
+
         form.reset();
       })
       .catch((error) => {
         const err = error.message;
-        console.log(err);
+        setError("email address or password doesn't match");
       });
   };
   return (
@@ -28,6 +30,7 @@ const Login = () => {
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex">
           <div className="text-center ">
+            <h1 className="text-red-500">{error}</h1>
             <h1 className="text-5xl font-bold"> Please Login!</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
