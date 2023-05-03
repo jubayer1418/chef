@@ -1,12 +1,17 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvder";
 import Gitgogle from "./gitgogle";
 
 const Login = () => {
   const [error, setError] = useState("");
   const { singIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/chef";
+
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -17,8 +22,8 @@ const Login = () => {
       .then((result) => {
         const loguser = result.user;
         setError("");
-
         form.reset();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const err = error.message;

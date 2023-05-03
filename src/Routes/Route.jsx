@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 import { createBrowserRouter } from "react-router-dom";
 import About from "../Components/About";
 import Blogs from "../Components/Blogs";
@@ -8,6 +9,7 @@ import Login from "../Components/Login";
 import Register from "../Components/Register";
 import Spiner from "../Components/Spiner";
 import Main from "../Layout/Main";
+import PrivateRoute from "./PrivateRoute";
 
 // eslint-disable-next-line no-unused-vars
 const router = createBrowserRouter([
@@ -39,7 +41,11 @@ const router = createBrowserRouter([
       {
         path: "/chef/:id",
 
-        element: <ChefRecipes></ChefRecipes>,
+        element: (
+          <PrivateRoute>
+            <ChefRecipes></ChefRecipes>
+          </PrivateRoute>
+        ),
       },
     ],
   },
