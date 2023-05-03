@@ -4,9 +4,9 @@ import Button from "./Button";
 
 const Home = () => {
   return (
-    <div className="grid md:grid-cols-2 w-[80%] mx-auto my-9">
+    <div className="grid md:grid-cols-2 md:w-[80%] w-[90%] mx-auto my-9">
       <div className="space-y-10">
-        <h1 className="text-8xl font-semibold">
+        <h1 className="md:text-8xl text-3xl font-semibold">
           Get Fresh <span className="text-yellow-400">Food </span>
           in a Easy Way
         </h1>
