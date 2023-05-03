@@ -7,7 +7,6 @@ import ErrorPage from "../Components/Error";
 import Home from "../Components/Home";
 import Login from "../Components/Login";
 import Register from "../Components/Register";
-import Spiner from "../Components/Spiner";
 import Main from "../Layout/Main";
 import PrivateRoute from "./PrivateRoute";
 
@@ -48,10 +47,6 @@ const router = createBrowserRouter([
         ),
       },
     ],
-  },
-  {
-    path: "/sk",
-    element: <Spiner></Spiner>,
   },
 ]);
 export default router;
