@@ -1,15 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
+import { Rating } from "@smastrom/react-rating";
 import React, { useEffect, useState } from "react";
 import { AiTwotoneLike } from "react-icons/ai";
 import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const ChefRecipes = () => {
   // eslint-disable-next-line no-unused-vars
   const [recipe, setRecipe] = useState([]);
-  const { name, experience, recipes, like, image, banner, bio } = recipe;
-
+  const { name, experience, like, image, banner, bio } = recipe;
+  const notify = () => toast("Wow so easy!");
   const id = useParams();
-  console.log(id);
+
   useEffect(() => {
     fetch(`https://server-jubayer1418.vercel.app/chef/${id.id}`)
       .then((res) => res.json())
@@ -17,7 +20,6 @@ const ChefRecipes = () => {
   }, []);
   return (
     <>
-      {" "}
       <div className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto flex flex-col">
           <div className="lg:w-4/6 mx-auto">
@@ -72,6 +74,79 @@ const ChefRecipes = () => {
                 <h1 className="text-2xl font-bold">Description</h1>
                 <p className="leading-relaxed text-lg mb-4">{bio}</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex gap-8 w-[80%] mx-auto">
+        <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card-body">
+            <h2 className="card-title font-bold ">Sweet and sour porks</h2>
+            <p>
+              <span className="text-xl font-bold">Method: </span>
+              {bio}
+            </p>
+            <h1 className="text-xl font-bold">Ingredients </h1>
+            <ul>
+              <li>1. Hoisin sauce</li>
+              <li>2. Ginger</li>
+              <li>3. Black bean and garlic sauce</li>
+              <li>4. Soy sauce</li>
+              <li>5 .Five-spice powder</li>
+            </ul>
+            <div className="card-actions justify-between items-center ">
+              <Rating style={{ maxWidth: 120 }} value={5} readOnly />
+              <button onClick={notify} className="btn btn-warning">
+                Favorite
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card-body">
+            <h2 className="card-title font-bold">Kung Pao chicken</h2>
+            <p>
+              <span className="text-xl font-bold">Method: </span>
+              {bio}
+            </p>
+            <h1 className="text-xl font-bold">Ingredients </h1>
+            <ul>
+              <li>1. Hoisin sauce</li>
+              <li>2. Ginger</li>
+              <li>3. Black bean and garlic sauce</li>
+              <li>4. Soy sauce</li>
+              <li>5 .Five-spice powder</li>
+            </ul>
+
+            <div className="card-actions justify-between items-center ">
+              <Rating style={{ maxWidth: 120 }} value={5} readOnly />
+              <button onClick={notify} className="btn btn-warning">
+                Favorite
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card-body">
+            <h2 className="card-title font-bold">Peking duck</h2>
+            <p>
+              <span className="text-xl font-bold">Method: </span>
+              {bio}
+            </p>
+            <h1 className="text-xl font-bold">Ingredients </h1>
+            <ul>
+              <li>1. Hoisin sauce</li>
+              <li>2. Ginger</li>
+              <li>3. Black bean and garlic sauce</li>
+              <li>4. Soy sauce</li>
+              <li>5 .Five-spice powder</li>
+            </ul>
+            <div className="card-actions justify-between items-center ">
+              <Rating style={{ maxWidth: 120 }} value={5} readOnly />
+              <button onClick={notify} className="btn btn-warning">
+                Favorite
+              </button>
+              <ToastContainer />
             </div>
           </div>
         </div>
