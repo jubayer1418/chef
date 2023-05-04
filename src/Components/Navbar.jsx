@@ -15,7 +15,7 @@ const Navbar = () => {
     <header className="text-gray-600 body-font ">
       <div className="container mx-auto flex flex-wrap flex-col md:flex-row items-center">
         <Link to={"/"}>
-          <img className="h-10" src="../../public/assets/logo.png" alt="" />
+          <img className="h-10" src="../../public/assets/logo.png" alt="logo" />
         </Link>
         <nav className="md:mx-auto  md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
           <NavLink
@@ -49,7 +49,9 @@ const Navbar = () => {
             About us
           </NavLink>
         </nav>
-        <span className="hover:text-yellow-400 pr-8">{user?.email}</span>
+        <span className="hover:text-yellow-400 pr-8 text-2xl font-bold">
+          {user?.email}
+        </span>
 
         <div className="flex items-center gap-10 h-32">
           {user ? (

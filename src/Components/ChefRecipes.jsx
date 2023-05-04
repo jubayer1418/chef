@@ -78,7 +78,7 @@ const ChefRecipes = () => {
           </div>
         </div>
       </div>
-      <div className="flex gap-8 w-[80%] mx-auto">
+      <div className="md:flex gap-8 w-[80%] mx-auto ">
         <div className="card w-96 bg-base-100 shadow-xl">
           <div className="card-body">
             <h2 className="card-title font-bold ">Sweet and sour porks</h2>
